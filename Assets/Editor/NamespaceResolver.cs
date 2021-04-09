@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEditor;
 
-namespace CarsGame.Editor
+namespace KartRacing.Editor
 {
     public class NamespaceResolver : UnityEditor.AssetModificationProcessor
     {
