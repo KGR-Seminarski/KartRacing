@@ -33,10 +33,10 @@ namespace KartRacing.Editor
                             ? SegmentedPath[i]
                             : SegmentedPath[i] + "."; // Don't add '.' at the end of the namespace
                 }
-                
+
                 FinalNamespace = EditorSettings.projectGenerationRootNamespace + "." + GeneratedNamespace;
             }
-            
+
             var Content = File.ReadAllText(ActualFile);
             var NewContent = Content.Replace("#NAMESPACE#", FinalNamespace);
 
