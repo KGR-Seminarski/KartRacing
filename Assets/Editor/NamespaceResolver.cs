@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using UnityEditor;
 
-namespace CarsGame.Editor
+namespace KartRacing.Editor
 {
     public class NamespaceResolver : UnityEditor.AssetModificationProcessor
     {
@@ -33,10 +33,10 @@ namespace CarsGame.Editor
                             ? SegmentedPath[i]
                             : SegmentedPath[i] + "."; // Don't add '.' at the end of the namespace
                 }
-                
+
                 FinalNamespace = EditorSettings.projectGenerationRootNamespace + "." + GeneratedNamespace;
             }
-            
+
             var Content = File.ReadAllText(ActualFile);
             var NewContent = Content.Replace("#NAMESPACE#", FinalNamespace);
 
