@@ -7,9 +7,10 @@ using UnityEngine.AI;
 namespace KartRacing.Editor
 {
     public class Controller : MonoBehaviour
-    {
+    { 
         
-   
+        
+   //DOLE JE MOJA SKRIPTA STARA
     private float HorizontalInput;
     private float VerticalInput;
     private float SteerAngle;
@@ -21,9 +22,9 @@ namespace KartRacing.Editor
     
     private float BreakForce;
     
-    [SerializeField] private float MotorForce;
-    [SerializeField] private float BrreakForce;
-    [SerializeField] private float MaxSteerAngle;
+    [SerializeField] private float MotorForce=10000;
+    [SerializeField] private float BrreakForce=10000;
+    [SerializeField] private float MaxSteerAngle=40;
     
     [SerializeField] private WheelCollider FrontLeftWheelCollider;
     [SerializeField] private WheelCollider FrontRightWheelCollider;
@@ -40,13 +41,13 @@ namespace KartRacing.Editor
     
     
     
-    private void Update()
+    private void FixedUpdate()
     {
         GetInput();
         HandleMotor();
         HandleSteering();
         //Kart.transform.position = new Vector3(0, 0,  HorizontalInput * Time.deltaTime);
-        //UpdateWheels();
+        UpdateWheels();
     }
     
     
@@ -97,10 +98,22 @@ namespace KartRacing.Editor
     }
     private void UpdateWheels()
     {
+       
+        
+       
+         // FrontLeftWheelTransform.Rotate (FrontLeftWheelCollider.rpm /60*360*Time.deltaTime,0,0);
+         //        FrontRightWheelTransform.Rotate ( FrontRightWheelCollider.rpm /60*360*Time.deltaTime,0,0);
+         //        RearLeftWheelTransform.Rotate (RearLeftWheelCollider.rpm /60*360* Time.deltaTime,0,0);
+         //        RearRightWheelTransform.Rotate (RearRightWheelCollider.rpm / 60*360 * Time.deltaTime,0,0);
+        
+        
         UpdateWheel(FrontLeftWheelCollider,FrontLeftWheelTransform);
         UpdateWheel(FrontRightWheelCollider,FrontRightWheelTransform);
         UpdateWheel(RearRightWheelCollider,RearRightWheelTransform);
         UpdateWheel(RearLeftWheelCollider,RearLeftWheelTransform);
+        
+        
+        
     }
     
     private void UpdateWheel(WheelCollider WheelCollider, Transform fWheelTransform)
@@ -110,7 +123,11 @@ namespace KartRacing.Editor
         WheelCollider.GetWorldPose(out position,out rotation);
         fWheelTransform.rotation = rotation;
         fWheelTransform.position = position;
-    
+
+        
+        // fWheelTransform.localRotation = rotation;
+        // fWheelTransform.localPosition = position;
+
     }
      }
 }
